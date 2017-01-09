@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<head xmlns:v-bind="http://www.w3.org/1999/xhtml">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <title>Cruise</title>
+</head>
+<body>
+<h2>hello vue</h2>
+<div id="hello-vue">
+    <div>{{message}}</div>
+</div>
+
+<h2>数据渲染</h2>
+<div id="demo-render">
+    <div>{{demoText }}</div>
+    <div>{{demoText + ", text added"}}</div>
+</div>
+
+<h2>条件渲染</h2>
+<div id="demo-vif">
+    <div v-if="show">show me!</div>
+    <div v-if="!show">hide me!</div>
+    <div v-show="show">show me!</div>
+    <div v-show="!show">hide me, with element exists!</div>
+</div>
+
+<h2>循环渲染 和 样式绑定</h2>
+<div id="demo-vfor">
+    <table border='2'>
+        <tr v-for="fruit in fruits">
+            <td v-bind:style="fruit.style">{{fruit.name }}</td>
+            <td v-bind:style="fruit.style">{{fruit.size }}</td>
+            <td v-bind:style="fruit.style">{{fruit.description }}</td>
+        </tr>
+    </table>
+</div>
+
+<h2>表单数据绑定</h2>
+<div id="demo-databinding">
+    <input type="text" v-model="message">
+    <div>{{message}}</div>
+</div>
+
+<h2>计算属性（computed）</h2>
+<div id="demo-computed">
+    <input type="text" v-model="message">
+    <div>{{message}}</div>
+    <div>{{computedMessage}}</div>
+</div>
+
+<h2>事件监听</h2>
+<div id='demo-events'>
+    <button type="button" v-on:click="decrease">-</button>
+    {{number}}
+    <button type="button" v-on:click.stop="increase">+</button>
+</div>
+
+<h2>元素属性绑定</h2>
+<div id="demo-attr-binding">
+    <img v-bind:src="imgUrl" width="100px">
+</div>
+
+<h2>组件</h2>
+<div id="demo-component">
+    <my-component></my-component>
+</div>
+
+<!--require.js-->
+<script src="third-party/requirejs/require.js"></script>
+
+<!--http://stackoverflow.com/questions/23697332/requirejs-paths-not-working-from-require-config-->
+<!--require.js config-->
+<script src="javascripts/main.js"></script>
+
+<script>
+    require(["index"], function (indexVms) {
+        window.viewModel = indexVms;
+    })
+</script>
+</body>
+</html>
